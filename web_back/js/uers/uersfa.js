@@ -27,6 +27,6 @@ var user = {
     commentCount: function(fanhui) {
         $.get(url + 'admin/comment_count', function(res) {
             fanhui(res);
-        })
-    }
+        });
+    },
 }
