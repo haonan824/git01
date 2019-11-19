@@ -10,6 +10,11 @@ var user = {
     tuichu: function(fanhui) {
         $.post('http://localhost:8000/admin/logout', function(res) {
             fanhui(res);
-        })
+        });
+    },
+    yhxinxi: function(fanhui) {
+        $.get('http://localhost:8000/admin/getuser', function(res) {
+            fanhui(res)
+        });
     }
 }
