@@ -466,6 +466,11 @@
             $('#pianshu').text(res.data.all_count);
             $('#rpianshu').text(res.data.day_count);
         });
+        user.commentCount(function(res) {
+            console.log(res);
+            $('#comment').text(res.data.all_count);
+            $('#rcomment').text(res.data.day_count);
+        });
     </script>
 </body>
 
