@@ -129,7 +129,7 @@
         // $('#motaikuang').load('./motaikuang.html');
         $(function(){
             $('#tuichu').click(function() {
-            $('#delcfmModel').modal('show')
+            $('#delcfmModel').modal('show');
             $('#yes').click(function(){
                 user.tuichu(function(res) {
                     // console.log(res);
@@ -138,29 +138,18 @@
                     }else{
                         $('#modalzi').text('退出失败');
                         $('#myModal').modal('show');
-                    }
+                    };
                 });
             })
-            
-            // if () {
-            //     user.tuichu(function(res) {
-            //         // console.log(res);
-            //         if (res.code === 200) {
-            //             location.href = './login.html'
-            //         };
-            //     });
-            // } else {
-            //     return;
-            // };
         });
         //用户详情
         user.yhxinxi(function(res) {
-            // console.log(res);
+            console.log(res);
             $('.yhImg').prop('src', res.data.user_pic);
             $('#yhName').text(res.data.nickname);
             $('#yhName').css("font-style", "normal");
-        })
-        })
+        });
+        });
  
     </script>
 </body>

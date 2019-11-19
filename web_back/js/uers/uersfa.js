@@ -18,5 +18,11 @@ var user = {
         $.get(url + 'admin/getuser', function(res) {
             fanhui(res)
         });
-    }
+    },
+    articleCount: function(fanhui) {
+        $.get(url + 'admin/article_count', function(res) {
+            fanhui(res)
+        })
+    },
+
 }
