@@ -32,37 +32,13 @@
             </form>
         </div>
     </div>
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                        &times;
-                    </button>
-                    <h4 class="modal-title" id="myModalLabel">
-                        登录提示
-                    </h4>
-                </div>
-                <div class="modal-body" id="modalzi">
-                    在这里添加一些文本
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭
-                    </button>
-                    <!-- <button type="button" class="btn btn-primary">
-                        提交更改
-                    </button> -->
-                </div>
-            </div>
-            <!-- /.modal-content -->
-        </div>
-        <!-- /.modal -->
-    </div>
+    <div id="motaikuang"></div>
     <script src="./js/jquery-1.12.4.min.js"></script>
     <script src="./js/bootstrap/js/bootstrap.min.js"></script>
     <script src="./js/uers/uersfa.js"></script>
 
     <script>
+        $('#motaikuang').load('./motaikuang.html');
         //点击获取文本框的值
         $('#annv').click(function() {
             var userName = $('#userName').val().trim();
@@ -76,13 +52,13 @@
             // console.log(userName, userPassword);
             //用户登录
             user.denglu(userName, userPassword, function(res) {
-                // console.log(res);
-                if (res === 200) {
-                    location.href = ''
+                console.log(res);
+                if (res.code === 200) {
+                    location.href = 'http://127.0.0.1:5500/web_back/index.html';
                 } else {
                     $('#modalzi').text(res.msg);
                     $('#myModal').modal('show');
-                }
+                };
             });
             //用户退出
         })
