@@ -50,8 +50,29 @@
     <div class="main" id="main_body">
         <iframe src="main_count.html" frameborder="0" id="main_frame" name="main_frame" frameborder="0" scrolling="auto"></iframe>
     </div>
-
+    <div class="modal fade" id="delcfmModel">
+        <div class="modal-dialog">
+            <div class="modal-content message_align">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                    <h4 class="modal-title">提示信息</h4>
+                </div>
+                <div class="modal-body">
+                    <p>您确认要退出吗？</p>
+                </div>
+                <div class="modal-footer">
+                    <input type="hidden" id="url" />
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-success" data-dismiss="modal" id="yes">确定</a>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
     <script src="js/jquery-1.12.4.min.js"></script>
+    <script src="./js/bootstrap/js/bootstrap.min.js"></script>
     <script src="./js/uers/uersfa.js"></script>
     <script>
         var $level01 = $('.level01');
@@ -59,7 +80,6 @@
         $level01.click(function() {
             $level01.not($(this)).removeClass('active');
             $(this).addClass('active');
-
             if ($(this).next().hasClass('level02')) {
                 $(this).next().slideToggle();
                 $(this).find('b').toggleClass('rotate0');
@@ -105,25 +125,43 @@
         }
     </script>
     <script>
+        //用户退出
         // $('#motaikuang').load('./motaikuang.html');
-        $('#tuichu').click(function() {
-            if (confirm('确定要退出')) {
+        $(function(){
+            $('#tuichu').click(function() {
+            $('#delcfmModel').modal('show')
+            $('#yes').click(function(){
                 user.tuichu(function(res) {
                     // console.log(res);
                     if (res.code === 200) {
                         location.href = './login.html'
+                    }else{
+                        $('#modalzi').text('退出失败');
+                        $('#myModal').modal('show');
                     }
-                })
-            } else {
-                return;
-            }
-        })
+                });
+            })
+            
+            // if () {
+            //     user.tuichu(function(res) {
+            //         // console.log(res);
+            //         if (res.code === 200) {
+            //             location.href = './login.html'
+            //         };
+            //     });
+            // } else {
+            //     return;
+            // };
+        });
+        //用户详情
         user.yhxinxi(function(res) {
-            console.log(res);
+            // console.log(res);
             $('.yhImg').prop('src', res.data.user_pic);
             $('#yhName').text(res.data.nickname);
             $('#yhName').css("font-style", "normal");
         })
+        })
+ 
     </script>
 </body>
 

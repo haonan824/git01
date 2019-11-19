@@ -38,29 +38,31 @@
     <script src="./js/uers/uersfa.js"></script>
 
     <script>
-        $('#motaikuang').load('./motaikuang.html');
-        //点击获取文本框的值
-        $('#annv').click(function() {
-            var userName = $('#userName').val().trim();
-            var userPassword = $('#userPassword').val().trim();
-            if (userName === '' || userPassword === '') {
-                // alert('你输入的内容不能为空');
-                $('#modalzi').text('你输入的内容不能为空');
-                $('#myModal').modal('show');
-                return;
-            };
-            // console.log(userName, userPassword);
-            //用户登录
-            user.denglu(userName, userPassword, function(res) {
-                console.log(res);
-                if (res.code === 200) {
-                    location.href = 'http://127.0.0.1:5500/web_back/index.html';
-                } else {
-                    $('#modalzi').text(res.msg);
+        $(function() {
+            $('#motaikuang').load('./motaikuang.html');
+            //点击获取文本框的值
+            $('#annv').click(function() {
+                var userName = $('#userName').val().trim();
+                var userPassword = $('#userPassword').val().trim();
+                if (userName === '' || userPassword === '') {
+                    // alert('你输入的内容不能为空');
+                    $('#modalzi').text('你输入的内容不能为空');
                     $('#myModal').modal('show');
+                    return;
                 };
-            });
-            //用户退出
+                // console.log(userName, userPassword);
+                //用户登录
+                user.denglu(userName, userPassword, function(res) {
+                    // console.log(res);
+                    if (res.code === 200) {
+                        location.href = 'http://127.0.0.1:5500/web_back/index.html';
+                    } else {
+                        $('#modalzi').text(res.msg);
+                        $('#myModal').modal('show');
+                    };
+                });
+                //用户退出
+            })
         })
     </script>
 </body>
